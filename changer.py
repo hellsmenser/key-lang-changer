@@ -16,17 +16,21 @@ while(True):
         clearClip = ''
         clip = clip_get()
         for a in clip:
-            if(a.lower() in eng):
-                i = eng.index(a.lower())
-                if(a.isupper()):
-                    clearClip+=ru[i].upper()
+            try:
+                if(a.lower() in eng):
+                    i = eng.index(a.lower())
+                    if(a.isupper()):
+                        clearClip+=ru[i].upper()
+                    else:
+                        clearClip+=ru[i]
                 else:
-                    clearClip+=ru[i]
-            else:
-                i = ru.index(a.lower())
-                if(a.isupper()):
-                    clearClip+=eng[i].upper()
-                else:
-                    clearClip+=eng[i]
+                    i = ru.index(a.lower())
+                    if(a.isupper()):
+                        clearClip+=eng[i].upper()
+                    else:
+                        clearClip+=eng[i]
+            except:
+                clearClip+=a
+                print(a + " Отсутствует в списках");
             
         clip_set(clearClip)
